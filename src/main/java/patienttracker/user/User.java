@@ -1,10 +1,30 @@
 package patienttracker.user;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "tracker_user")
 public class User {
 
-    private String id;
+    @Id
+    @SequenceGenerator(
+            name = "user_sequence",
+            sequenceName = "user_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "user_sequence"
+    )
+    @Column(
+            updatable = false
+    )
+    private Long id;
+    @Column(
+            unique = true
+    )
     private String username;
     private String password;
     private String firstName;
@@ -13,7 +33,11 @@ public class User {
     private Character gender;
     private Character userType;
 
-    public User(String id, String username, String password, String firstName, String lastName, LocalDate dob, Character gender, Character userType) {
+    public User() {
+
+    }
+
+    public User(Long id, String username, String password, String firstName, String lastName, LocalDate dob, Character gender, Character userType) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -34,11 +58,11 @@ public class User {
         this.userType = userType;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
