@@ -1,8 +1,10 @@
-package patienttracker.user;
+package patienttracker.config;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import patienttracker.model.User;
+import patienttracker.repository.UserRepository;
 
 import java.time.LocalDate;
 import java.time.Month;

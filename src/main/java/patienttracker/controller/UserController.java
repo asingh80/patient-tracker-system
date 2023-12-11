@@ -1,7 +1,9 @@
-package patienttracker.user;
+package patienttracker.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import patienttracker.model.User;
+import patienttracker.service.UserService;
 
 import java.util.List;
 

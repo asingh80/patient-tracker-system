@@ -1,4 +1,4 @@
-package patienttracker.user;
+package patienttracker.model;
 
 import jakarta.persistence.*;
 
