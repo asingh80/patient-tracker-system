@@ -18,6 +18,10 @@ public class AppointmentService {
         this.appointmentRepository = appointmentRepository;
     }
 
+    public void addNewAppointment(Appointment appointment) {
+        this.appointmentRepository.save(appointment);
+    }
+
     public List<Appointment> getAppointments() {
         return this.appointmentRepository.findAll();
     }

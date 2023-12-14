@@ -19,6 +19,11 @@ public class AppointmentController {
         this.appointmentService = appointmentService;
     }
 
+    @PostMapping
+    public void addNewAppointment(@RequestBody Appointment appointment) {
+        this.appointmentService.addNewAppointment(appointment);
+    }
+
     @GetMapping
     public List<Appointment> getAppointments() {
         return this.appointmentService.getAppointments();
