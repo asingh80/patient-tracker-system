@@ -23,18 +23,23 @@ public class UserController {
         return this.userService.getUsers();
     }
 
+    @GetMapping("/{id}")
+    public User getUserById(@PathVariable Long id) {
+        return this.userService.getUserById(id);
+    }
+
     @PostMapping
     public void addNewUser(@RequestBody User user) {
         this.userService.addNewUser(user);
     }
 
-    @DeleteMapping(path = "{id}")
-    public void deleteUser(@PathVariable("id") Long id) {
+    @DeleteMapping("/{id}")
+    public void deleteUser(@PathVariable Long id) {
         this.userService.deleteUser(id);
     }
 
-    @PutMapping(path = "{id}")
-    public void updateUser(@PathVariable("id") Long id,
+    @PutMapping("/{id}")
+    public void updateUser(@PathVariable Long id,
                            @RequestParam(required = false) String username,
                            @RequestParam(required = false) String password) {
         this.userService.updateUser(id, username, password);

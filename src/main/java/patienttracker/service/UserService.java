@@ -38,8 +38,7 @@ public class UserService {
     }
 
     public void updateUser(Long id, String username, String password) {
-        User user = this.userRepository.findById(id)
-                .orElseThrow(() -> new IllegalStateException("The user with ID " + id + " does not exist"));
+        User user = this.getUserById(id);
 
         if (username != null && !username.isEmpty() && !username.equals(user.getUsername())) {
             Optional<User> userByUsername = this.userRepository.findUserByUsername(username);
@@ -54,5 +53,10 @@ public class UserService {
         }
 
         this.userRepository.save(user);
+    }
+
+    public User getUserById(Long id) {
+        return this.userRepository.findById(id)
+                .orElseThrow(() -> new IllegalStateException("The user with ID " + id + " does not exist"));
     }
 }

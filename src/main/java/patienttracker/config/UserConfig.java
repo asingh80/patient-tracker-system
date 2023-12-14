@@ -14,9 +14,10 @@ import java.util.List;
 public class UserConfig {
 
     @Bean
-    CommandLineRunner commandLineRunner(UserRepository userRepository) {
+    CommandLineRunner userCommandLineRunner(UserRepository userRepository) {
         return args -> {
             User u1 = new User(
+                    5L,
                     "doc",
                     "***",
                     "John",
@@ -27,6 +28,7 @@ public class UserConfig {
             );
 
             User u2 = new User(
+                    6L,
                     "janpat",
                     "****",
                     "Jane",
@@ -37,6 +39,7 @@ public class UserConfig {
             );
 
             User u3 = new User(
+                    7L,
                     "rich",
                     "*****",
                     "Richard",
