@@ -37,3 +37,13 @@ nav {
   height: 31px;
   margin-right: 10px;
 }
+
+.container {
+  position: absolute;
+  top: 68px;
+  left: 4px;
+  width: 1440px;
+  height: 998px;
+  background: #FFFFFFFF;
+  border-radius: 0px;
+}

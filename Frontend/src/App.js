@@ -21,17 +21,17 @@ const NavBar = () => {
 const Home = () => {
   const navigate = useNavigate();
 
-  const handleButtonClick = () => {
-    navigate('/path'); // Replace '/path' with the desired route
+  const handleLogin = (userType) => {
+    navigate('/' + userType); // Replace '/path' with the desired route
   };
 
   return (
-    <div>
-      {/* <h1 className="welcomeText">Welcome to Medisync</h1>
+    <div className="container">
+      <h1 className="welcomeText">Welcome to Medisync</h1>
       <div className="login-buttons">
-          <button onClick={() => handleLogin('doctor')}>I am a patient</button>
-          <button onClick={() => handleLogin('patient')}>I am a doctor</button>
-        </div> */}
+          <button onClick={() => handleLogin('patient')}>I am a patient</button>
+          <button onClick={() => handleLogin('doctor')}>I am a doctor</button>
+        </div>
     </div>
   );
 };
@@ -39,7 +39,6 @@ const Home = () => {
 const App = () => {
   return (
     <Router>
-      {/* <div>hi</div> */}
       <NavBar></NavBar>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -64,11 +63,11 @@ export const WelcomePage = () => {
   return (
     <div className="welcome-container">
       <div className="welcome-content">
-        <h1>Hello Doctor!</h1>
+        <h1>Hello!</h1>
         <p>Overview</p>
         <div className="login-buttons">
-          <button onClick={() => handleLogin('teacher')}>Teacher Login</button>
-          <button onClick={() => handleLogin('student')}>Student Login</button>
+          <button onClick={() => handleLogin('')}>Sign up</button>
+          <button onClick={() => handleLogin('')}>Login</button>
         </div>
       </div>
     </div>
