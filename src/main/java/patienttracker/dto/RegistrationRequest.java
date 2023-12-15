@@ -40,10 +40,6 @@ public class RegistrationRequest {
         this.patient = patient;
     }
 
-    public Character getUserType() {
-        return user.getUserType();
-    }
-
     @Override
     public String toString() {
         return "RegistrationRequest{" +

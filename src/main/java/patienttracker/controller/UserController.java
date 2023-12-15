@@ -2,6 +2,7 @@ package patienttracker.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import patienttracker.dto.RegistrationRequest;
 import patienttracker.model.User;
 import patienttracker.service.UserService;
 
@@ -29,8 +30,8 @@ public class UserController {
     }
 
     @PostMapping
-    public void addNewUser(@RequestBody User user) {
-        this.userService.addNewUser(user);
+    public void addNewUser(@RequestBody RegistrationRequest req) {
+        this.userService.addNewUser(req);
     }
 
     @DeleteMapping("/{id}")

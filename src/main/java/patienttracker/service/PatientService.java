@@ -1,0 +1,22 @@
+package patienttracker.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import patienttracker.model.Patient;
+import patienttracker.repository.PatientRepository;
+
+@Service
+public class PatientService {
+
+    private final PatientRepository patientRepository;
+
+    @Autowired
+    public PatientService(PatientRepository patientRepository) {
+        this.patientRepository = patientRepository;
+    }
+
+    public void addNewPatient(Patient patient) {
+        this.patientRepository.save(patient);
+    }
+
+}
