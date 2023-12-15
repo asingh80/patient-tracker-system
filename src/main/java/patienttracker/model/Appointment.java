@@ -4,6 +4,11 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
+/**
+ * Represents an appointment in the patient tracking system.
+ * Appointments are stored in the "appointments" table in the database.
+ */
+
 @Entity
 @Table(name = "appointments", uniqueConstraints = {
         @UniqueConstraint(columnNames = {"doctor_id", "date_time"})
@@ -23,11 +28,21 @@ public class Appointment {
     @Column(
             updatable = false
     )
-    private Long id;
-    private Long doctorId;
-    private Long patientId;
+    private Long id; // unique
+    private Long doctorId; // unique
+    private Long patientId; // unique
     private LocalDateTime dateTime;
-    private Character status;
+
+    /**
+     * The status of an appointment is denoted by a character code.
+     * 
+     * 'S' denotes scheduled (upcoming) appointments.
+     * 'F' denotes finished (past) appointments.
+     * 'C' denotes cancelled appointments.
+     * 
+     */
+
+    private Character status; 
     private String purpose;
 
     public Appointment() {
@@ -87,6 +102,16 @@ public class Appointment {
         return status;
     }
 
+    /**
+     * Sets the status of the appointment, represented by a character code.
+     * 
+     * 'S' denotes scheduled (upcoming) appointments.
+     * 'F' denotes finished (past) appointments.
+     * 'C' denotes cancelled appointments.
+     * 
+     * @param status The status to set.
+     */
+
     public void setStatus(Character status) {
         this.status = status;
     }
@@ -98,6 +123,13 @@ public class Appointment {
     public void setPurpose(String purpose) {
         this.purpose = purpose;
     }
+
+
+    /**
+     * Returns a string representation of the appointment.
+     *
+     * @return A string representation of the appointment.
+     */
 
     @Override
     public String toString() {

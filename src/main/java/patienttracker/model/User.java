@@ -5,6 +5,11 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
+/**
+ * Represents a user in the patient tracking system.
+ * Users are stored in the "tracker_user" table.
+ */
+
 @Entity
 @Table(name = "tracker_user")
 public class User {
@@ -32,13 +37,13 @@ public class User {
     @Column(
             unique = true
     )
-    private String username;
+    private String username; // unique
     private String password;
     private String firstName;
     private String lastName;
     private LocalDate dob;
-    private Character gender;
-    private Character userType;
+    private Character gender; // 'M' or 'F'
+    private Character userType; // 'D' for doctors and 'P' for patients
 
     public User() {
 
@@ -144,6 +149,12 @@ public class User {
     public void setUserType(Character userType) {
         this.userType = userType;
     }
+
+    /**
+     * Returns a string representation of the user.
+     *
+     * @return A string representation of the user.
+     */
 
     @Override
     public String toString() {
