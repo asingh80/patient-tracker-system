@@ -29,6 +29,11 @@ public class UserController {
         return this.userService.getUserById(id);
     }
 
+    @GetMapping("/username/{username}")
+    public User getUserByUsername(@PathVariable String username) {
+        return this.userService.getUserByUsername(username);
+    }
+
     @PostMapping
     public void addNewUser(@RequestBody RegistrationRequest req) {
         this.userService.addNewUser(req);

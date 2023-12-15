@@ -2,6 +2,7 @@ package patienttracker.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import patienttracker.model.Patient;
@@ -23,6 +24,11 @@ public class PatientController {
     @GetMapping
     public List<Patient> getPatients() {
         return this.patientService.getPatients();
+    }
+
+    @GetMapping("/{id}")
+    public Patient getPatientById(@PathVariable Long id) {
+        return this.patientService.getPatientById(id);
     }
 
 }

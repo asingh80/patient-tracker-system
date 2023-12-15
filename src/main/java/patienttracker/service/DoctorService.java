@@ -24,4 +24,10 @@ public class DoctorService {
     public List<Doctor> getDoctors() {
         return this.doctorRepository.findAll();
     }
+
+    public Doctor getDoctorById(Long id) {
+        return this.doctorRepository.findById(id)
+                .orElseThrow(() -> new IllegalStateException("The doctor with ID " + id + " does not exist"));
+    }
+
 }

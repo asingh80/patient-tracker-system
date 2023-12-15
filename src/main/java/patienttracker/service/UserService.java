@@ -81,4 +81,9 @@ public class UserService {
                 .orElseThrow(() -> new IllegalStateException("The user with ID " + id + " does not exist"));
     }
 
+    public User getUserByUsername(String username) {
+        return this.userRepository.findUserByUsername(username)
+                .orElseThrow(() -> new IllegalStateException("The user with username " + username + " does not exist"));
+    }
+
 }

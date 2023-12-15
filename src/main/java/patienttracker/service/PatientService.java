@@ -24,4 +24,10 @@ public class PatientService {
     public List<Patient> getPatients() {
         return this.patientRepository.findAll();
     }
+
+    public Patient getPatientById(Long id) {
+        return this.patientRepository.findById(id)
+                .orElseThrow(() -> new IllegalStateException("The patient with ID " + id + " does not exist"));
+    }
+
 }
