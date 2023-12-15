@@ -1,6 +1,8 @@
 import React from 'react';
 import { useNavigate, BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import LoginForm from './LoginSignup';
 import './stylesheets/App.css';
+
 const NavBar = () => {
   return (
     <div>
@@ -21,17 +23,17 @@ const NavBar = () => {
 const Home = () => {
   const navigate = useNavigate();
 
-  const handleButtonClick = () => {
-    navigate('/path'); // Replace '/path' with the desired route
+  const handleLogin = (userType) => {
+    navigate('/' + userType); 
   };
 
   return (
-    <div>
-      {/* <h1 className="welcomeText">Welcome to Medisync</h1>
+    <div className="container">
+      <h1 className="welcomeText">Welcome to Medisync</h1>
       <div className="login-buttons">
-          <button onClick={() => handleLogin('doctor')}>I am a patient</button>
-          <button onClick={() => handleLogin('patient')}>I am a doctor</button>
-        </div> */}
+          <button onClick={() => handleLogin('patient')}>I am a patient</button>
+          <button onClick={() => handleLogin('doctor')}>I am a doctor</button>
+        </div>
     </div>
   );
 };
@@ -39,11 +41,10 @@ const Home = () => {
 const App = () => {
   return (
     <Router>
-      {/* <div>hi</div> */}
       <NavBar></NavBar>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/doctor" element={<WelcomePage />} />
+        <Route path="/doctor" element={<LoginForm />} />
         <Route path="/patient" element={<WelcomePage />} />
         {/* Other routes */}
       </Routes>
@@ -64,11 +65,11 @@ export const WelcomePage = () => {
   return (
     <div className="welcome-container">
       <div className="welcome-content">
-        <h1>Hello Doctor!</h1>
+        <h1>Hello!</h1>
         <p>Overview</p>
         <div className="login-buttons">
-          <button onClick={() => handleLogin('teacher')}>Teacher Login</button>
-          <button onClick={() => handleLogin('student')}>Student Login</button>
+          <button onClick={() => handleLogin('')}>Sign up</button>
+          <button onClick={() => handleLogin('')}>Login</button>
         </div>
       </div>
     </div>
