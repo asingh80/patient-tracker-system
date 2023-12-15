@@ -43,7 +43,7 @@ public class AppointmentConfig {
                     "general check-up"
             );
 
-            appointmentRepository.saveAll(List.of(a1, a2, a3));
+//            appointmentRepository.saveAll(List.of(a1, a2, a3));
         };
     }
 

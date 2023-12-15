@@ -1,5 +1,6 @@
 package patienttracker.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,6 +12,7 @@ public class Patient {
     @OneToOne
     @MapsId
     @JoinColumn(name = "user_id")
+    @JsonBackReference
     private User user;
     private String history;
     private String allergies;
@@ -20,8 +22,7 @@ public class Patient {
 
     }
 
-    public Patient(User user, String history, String allergies, String chronicConditions) {
-        this.user = user;
+    public Patient(String history, String allergies, String chronicConditions) {
         this.history = history;
         this.allergies = allergies;
         this.chronicConditions = chronicConditions;

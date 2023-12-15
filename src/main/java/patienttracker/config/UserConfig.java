@@ -49,7 +49,7 @@ public class UserConfig {
                     'P'
             );
 
-            userRepository.saveAll(List.of(u1, u2, u3));
+//            userRepository.saveAll(List.of(u1, u2, u3));
         };
     }
 

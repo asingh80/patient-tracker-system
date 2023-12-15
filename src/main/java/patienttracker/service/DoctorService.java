@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import patienttracker.model.Doctor;
 import patienttracker.repository.DoctorRepository;
 
+import java.util.List;
+
 @Service
 public class DoctorService {
 
@@ -19,4 +21,7 @@ public class DoctorService {
         this.doctorRepository.save(doctor);
     }
 
+    public List<Doctor> getDoctors() {
+        return this.doctorRepository.findAll();
+    }
 }
