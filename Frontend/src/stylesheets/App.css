@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins');
-nav {
+/* nav {
   background-color: #ffffff;
 }
 
@@ -46,4 +46,60 @@ nav {
   height: 998px;
   background: #FFFFFFFF;
   border-radius: 0px;
+} */
+
+/* App.css */
+.main-nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 20px;
+  background-color: #f0f0f0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.5em;
+  display: flex;
+  color: #00477DFF;
+  text-decoration: none; 
+  align-items: center;
+  font-family: 'Poppins';
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 30px;
+}
+
+.logo-img {
+  width: 40px;
+  height: 40px;
+  margin-right: 15px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.welcome-text {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.login-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.login-button {
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate, BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import './stylesheets/App.css';
+import './stylesheets/WelcomePage.css'
 const NavBar = () => {
   return (
     <div>
