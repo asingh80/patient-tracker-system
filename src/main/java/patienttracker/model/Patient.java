@@ -3,6 +3,11 @@ package patienttracker.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
+/**
+ * Represents a patient in the patient tracking system.
+ * Patients are stored in the "patient" table.
+ */
+
 @Entity
 @Table(name = "patient")
 public class Patient {
@@ -67,6 +72,12 @@ public class Patient {
     public void setChronicConditions(String chronicConditions) {
         this.chronicConditions = chronicConditions;
     }
+
+    /**
+     * Returns a string representation of the patient.
+     *
+     * @return A string representation of the patient.
+     */
 
     @Override
     public String toString() {

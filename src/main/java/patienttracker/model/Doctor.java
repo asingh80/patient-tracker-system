@@ -3,21 +3,26 @@ package patienttracker.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
+/**
+ * Represents a doctor in the patient tracking system.
+ * Doctors are stored in the "doctor" table.
+ */
+
 @Entity
 @Table(name = "doctor")
 public class Doctor {
 
     @Id
-    private Long id;
+    private Long id; // unique
     @OneToOne
     @MapsId
     @JoinColumn(name = "user_id")
     @JsonBackReference
-    private User user;
-    private String specialization;
-    private Integer yoe;
-    private String qualification;
-    private String hospital;
+    private User user; // unique
+    private String specialization; // field of specialization
+    private Integer yoe; // 'years of experience'
+    private String qualification; // MD, MBBS, etc.
+    private String hospital; // associated hospital
 
     public Doctor() {
 
@@ -77,6 +82,12 @@ public class Doctor {
     public void setHospital(String hospital) {
         this.hospital = hospital;
     }
+
+    /**
+     * Returns a string representation of the doctor.
+     *
+     * @return A string representation of the doctor.
+     */
 
     @Override
     public String toString() {
