@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins');
+
+/* Navbar styling */
 nav {
   background-color: #ffffff;
 }
@@ -18,6 +20,7 @@ nav {
   margin-right: 0;
 }
 
+/* Logo styling */
 .logo {
   position: absolute;
   top: 17px;
@@ -25,19 +28,20 @@ nav {
   display: flex;
   align-items: center;
   font-family: 'Poppins';
-  font-size: 20px;
+  font-size: 27px;
   font-weight: 700;
-  line-height: 30px;
   color: #00477DFF;
-  text-decoration: none; 
+  text-decoration: none;
 }
 
+/* Logo image styling */
 .logo-img {
-  width: 31px;
-  height: 31px;
-  margin-right: 10px;
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
 }
 
+/* Container styling */
 .container {
   position: absolute;
   top: 68px;
@@ -46,4 +50,8 @@ nav {
   height: 998px;
   background: #FFFFFFFF;
   border-radius: 0px;
+}
+
+.main-nav a {
+  text-decoration: none;
 }

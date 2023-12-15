@@ -1,6 +1,8 @@
 import React from 'react';
 import { useNavigate, BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import LoginForm from './LoginSignup';
 import './stylesheets/App.css';
+
 const NavBar = () => {
   return (
     <div>
@@ -22,7 +24,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   const handleLogin = (userType) => {
-    navigate('/' + userType); // Replace '/path' with the desired route
+    navigate('/' + userType); 
   };
 
   return (
@@ -42,7 +44,7 @@ const App = () => {
       <NavBar></NavBar>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/doctor" element={<WelcomePage />} />
+        <Route path="/doctor" element={<LoginForm />} />
         <Route path="/patient" element={<WelcomePage />} />
         {/* Other routes */}
       </Routes>
