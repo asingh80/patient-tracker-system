@@ -1,0 +1,39 @@
+.welcome-container {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+
+.welcome-content {
+    text-align: center;
+}
+
+.login-buttons {
+margin-top: 20px;
+}
+
+.login-buttons button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+}
+
+.login-buttons button:hover {
+    background-color: #0056b3;
+}
+  
+body {
+    font-size: 35px;
+    font-family: sans-serif;
+    position: relative;
+    top: 30px;
+}
+  
+/* h1, p, button { */
+    /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
+/* } */
