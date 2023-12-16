@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"patienttracker"},{"l":"patienttracker.config"},{"l":"patienttracker.controller"},{"l":"patienttracker.dto"},{"l":"patienttracker.model"},{"l":"patienttracker.repository"},{"l":"patienttracker.service"}];updateSearchResults();

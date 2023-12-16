@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Doctor.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">patienttracker</a> &gt; <a href="index.source.html" class="el_package">patienttracker.model</a> &gt; <span class="el_source">Doctor.java</span></div><h1>Doctor.java</h1><pre class="source lang-java linenums">package patienttracker.model;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
+
+/**
+ * Represents a doctor in the patient tracking system.
+ * Doctors are stored in the &quot;doctor&quot; table.
+ */
+
+@Entity
+@Table(name = &quot;doctor&quot;)
+public class Doctor {
+
+    @Id
+    private Long id; // unique
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = &quot;user_id&quot;)
+    @JsonBackReference
+    private User user; // unique
+    private String specialization; // field of specialization
+    private Integer yoe; // 'years of experience'
+    private String qualification; // MD, MBBS, etc.
+    private String hospital; // associated hospital
+
+<span class="fc" id="L27">    public Doctor() {</span>
+
+<span class="fc" id="L29">    }</span>
+
+<span class="fc" id="L31">    public Doctor(String specialization, Integer yoe, String qualification, String hospital) {</span>
+<span class="fc" id="L32">        this.specialization = specialization;</span>
+<span class="fc" id="L33">        this.yoe = yoe;</span>
+<span class="fc" id="L34">        this.qualification = qualification;</span>
+<span class="fc" id="L35">        this.hospital = hospital;</span>
+<span class="fc" id="L36">    }</span>
+
+    public Long getId() {
+<span class="fc" id="L39">        return id;</span>
+    }
+
+    public void setId(Long id) {
+<span class="fc" id="L43">        this.id = id;</span>
+<span class="fc" id="L44">    }</span>
+
+    public User getUser() {
+<span class="fc" id="L47">        return user;</span>
+    }
+
+    public void setUser(User user) {
+<span class="fc" id="L51">        this.user = user;</span>
+<span class="fc" id="L52">    }</span>
+
+    public String getSpecialization() {
+<span class="fc" id="L55">        return specialization;</span>
+    }
+
+    public void setSpecialization(String specialization) {
+<span class="fc" id="L59">        this.specialization = specialization;</span>
+<span class="fc" id="L60">    }</span>
+
+    public Integer getYoe() {
+<span class="fc" id="L63">        return yoe;</span>
+    }
+
+    public void setYoe(Integer yoe) {
+<span class="fc" id="L67">        this.yoe = yoe;</span>
+<span class="fc" id="L68">    }</span>
+
+    public String getQualification() {
+<span class="fc" id="L71">        return qualification;</span>
+    }
+
+    public void setQualification(String qualification) {
+<span class="fc" id="L75">        this.qualification = qualification;</span>
+<span class="fc" id="L76">    }</span>
+
+    public String getHospital() {
+<span class="fc" id="L79">        return hospital;</span>
+    }
+
+    public void setHospital(String hospital) {
+<span class="fc" id="L83">        this.hospital = hospital;</span>
+<span class="fc" id="L84">    }</span>
+
+    /**
+     * Returns a string representation of the doctor.
+     *
+     * @return A string representation of the doctor.
+     */
+
+    @Override
+    public String toString() {
+<span class="fc" id="L94">        return &quot;Doctor{&quot; +</span>
+                &quot;id=&quot; + id +
+                &quot;, user=&quot; + user +
+                &quot;, specialization='&quot; + specialization + '\'' +
+                &quot;, yoe=&quot; + yoe +
+                &quot;, qualification='&quot; + qualification + '\'' +
+                &quot;, hospital='&quot; + hospital + '\'' +
+                '}';
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

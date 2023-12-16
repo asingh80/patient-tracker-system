@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>User.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">patienttracker</a> &gt; <a href="index.source.html" class="el_package">patienttracker.model</a> &gt; <span class="el_source">User.java</span></div><h1>User.java</h1><pre class="source lang-java linenums">package patienttracker.model;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
+
+import java.time.LocalDate;
+
+/**
+ * Represents a user in the patient tracking system.
+ * Users are stored in the &quot;tracker_user&quot; table.
+ */
+
+@Entity
+@Table(name = &quot;tracker_user&quot;)
+public class User {
+
+    @Id
+    @SequenceGenerator(
+            name = &quot;user_sequence&quot;,
+            sequenceName = &quot;user_sequence&quot;,
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = &quot;user_sequence&quot;
+    )
+    @Column(
+            updatable = false
+    )
+    private Long id;
+    @OneToOne(mappedBy = &quot;user&quot;, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private Doctor doctor;
+    @OneToOne(mappedBy = &quot;user&quot;, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private Patient patient;
+    @Column(
+            unique = true
+    )
+    private String username; // unique
+    private String password;
+    private String firstName;
+    private String lastName;
+    private LocalDate dob;
+    private Character gender; // 'M' or 'F'
+    private Character userType; // 'D' for doctors and 'P' for patients
+
+<span class="fc" id="L48">    public User() {</span>
+
+<span class="fc" id="L50">    }</span>
+
+<span class="fc" id="L52">    public User(Long id, String username, String password, String firstName, String lastName, LocalDate dob, Character gender, Character userType) {</span>
+<span class="fc" id="L53">        this.id = id;</span>
+<span class="fc" id="L54">        this.username = username;</span>
+<span class="fc" id="L55">        this.password = password;</span>
+<span class="fc" id="L56">        this.firstName = firstName;</span>
+<span class="fc" id="L57">        this.lastName = lastName;</span>
+<span class="fc" id="L58">        this.dob = dob;</span>
+<span class="fc" id="L59">        this.gender = gender;</span>
+<span class="fc" id="L60">        this.userType = userType;</span>
+<span class="fc" id="L61">    }</span>
+
+<span class="nc" id="L63">    public User(String username, String password, String firstName, String lastName, LocalDate dob, Character gender, Character userType) {</span>
+<span class="nc" id="L64">        this.username = username;</span>
+<span class="nc" id="L65">        this.password = password;</span>
+<span class="nc" id="L66">        this.firstName = firstName;</span>
+<span class="nc" id="L67">        this.lastName = lastName;</span>
+<span class="nc" id="L68">        this.dob = dob;</span>
+<span class="nc" id="L69">        this.gender = gender;</span>
+<span class="nc" id="L70">        this.userType = userType;</span>
+<span class="nc" id="L71">    }</span>
+
+    public Long getId() {
+<span class="fc" id="L74">        return id;</span>
+    }
+
+    public void setId(Long id) {
+<span class="fc" id="L78">        this.id = id;</span>
+<span class="fc" id="L79">    }</span>
+
+    public Doctor getDoctor() {
+<span class="fc" id="L82">        return doctor;</span>
+    }
+
+    public void setDoctor(Doctor doctor) {
+<span class="fc" id="L86">        this.doctor = doctor;</span>
+<span class="fc" id="L87">    }</span>
+
+    public Patient getPatient() {
+<span class="fc" id="L90">        return patient;</span>
+    }
+
+    public void setPatient(Patient patient) {
+<span class="fc" id="L94">        this.patient = patient;</span>
+<span class="fc" id="L95">    }</span>
+
+    public String getUsername() {
+<span class="fc" id="L98">        return username;</span>
+    }
+
+    public void setUsername(String username) {
+<span class="fc" id="L102">        this.username = username;</span>
+<span class="fc" id="L103">    }</span>
+
+    public String getPassword() {
+<span class="fc" id="L106">        return password;</span>
+    }
+
+    public void setPassword(String password) {
+<span class="fc" id="L110">        this.password = password;</span>
+<span class="fc" id="L111">    }</span>
+
+    public String getFirstName() {
+<span class="fc" id="L114">        return firstName;</span>
+    }
+
+    public void setFirstName(String firstName) {
+<span class="fc" id="L118">        this.firstName = firstName;</span>
+<span class="fc" id="L119">    }</span>
+
+    public String getLastName() {
+<span class="fc" id="L122">        return lastName;</span>
+    }
+
+    public void setLastName(String lastName) {
+<span class="fc" id="L126">        this.lastName = lastName;</span>
+<span class="fc" id="L127">    }</span>
+
+    public LocalDate getDob() {
+<span class="fc" id="L130">        return dob;</span>
+    }
+
+    public void setDob(LocalDate dob) {
+<span class="fc" id="L134">        this.dob = dob;</span>
+<span class="fc" id="L135">    }</span>
+
+    public Character getGender() {
+<span class="fc" id="L138">        return gender;</span>
+    }
+
+    public void setGender(Character gender) {
+<span class="fc" id="L142">        this.gender = gender;</span>
+<span class="fc" id="L143">    }</span>
+
+    public Character getUserType() {
+<span class="fc" id="L146">        return userType;</span>
+    }
+
+    public void setUserType(Character userType) {
+<span class="fc" id="L150">        this.userType = userType;</span>
+<span class="fc" id="L151">    }</span>
+
+    /**
+     * Returns a string representation of the user.
+     *
+     * @return A string representation of the user.
+     */
+
+    @Override
+    public String toString() {
+<span class="fc" id="L161">        return &quot;User{&quot; +</span>
+                &quot;id=&quot; + id +
+                &quot;, doctor=&quot; + doctor +
+                &quot;, patient=&quot; + patient +
+                &quot;, username='&quot; + username + '\'' +
+                &quot;, password='&quot; + password + '\'' +
+                &quot;, firstName='&quot; + firstName + '\'' +
+                &quot;, lastName='&quot; + lastName + '\'' +
+                &quot;, dob=&quot; + dob +
+                &quot;, gender=&quot; + gender +
+                &quot;, userType=&quot; + userType +
+                '}';
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
