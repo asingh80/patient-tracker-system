@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Appointment.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">patienttracker</a> &gt; <a href="index.source.html" class="el_package">patienttracker.model</a> &gt; <span class="el_source">Appointment.java</span></div><h1>Appointment.java</h1><pre class="source lang-java linenums">package patienttracker.model;
+
+import jakarta.persistence.*;
+
+import java.time.LocalDateTime;
+
+/**
+ * Represents an appointment in the patient tracking system.
+ * Appointments are stored in the &quot;appointments&quot; table in the database.
+ */
+
+@Entity
+@Table(name = &quot;appointments&quot;, uniqueConstraints = {
+        @UniqueConstraint(columnNames = {&quot;doctor_id&quot;, &quot;date_time&quot;})
+})
+public class Appointment {
+
+    @Id
+    @SequenceGenerator(
+            name = &quot;appt_sequence&quot;,
+            sequenceName = &quot;appt_sequence&quot;,
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = &quot;appt_sequence&quot;
+    )
+    @Column(
+            updatable = false
+    )
+    private Long id; // unique
+    private Long doctorId; // unique
+    private Long patientId; // unique
+    private LocalDateTime dateTime;
+
+    /**
+     * The status of an appointment is denoted by a character code.
+     * 
+     * 'S' denotes scheduled (upcoming) appointments.
+     * 'F' denotes finished (past) appointments.
+     * 'C' denotes cancelled appointments.
+     * 
+     */
+
+    private Character status; 
+    private String purpose;
+
+<span class="fc" id="L48">    public Appointment() {</span>
+
+<span class="fc" id="L50">    }</span>
+
+<span class="fc" id="L52">    public Appointment(Long id, Long doctorId, Long patientId, LocalDateTime dateTime, Character status, String purpose) {</span>
+<span class="fc" id="L53">        this.id = id;</span>
+<span class="fc" id="L54">        this.doctorId = doctorId;</span>
+<span class="fc" id="L55">        this.patientId = patientId;</span>
+<span class="fc" id="L56">        this.dateTime = dateTime;</span>
+<span class="fc" id="L57">        this.status = status;</span>
+<span class="fc" id="L58">        this.purpose = purpose;</span>
+<span class="fc" id="L59">    }</span>
+
+<span class="nc" id="L61">    public Appointment(Long doctorId, Long patientId, LocalDateTime dateTime, Character status, String purpose) {</span>
+<span class="nc" id="L62">        this.doctorId = doctorId;</span>
+<span class="nc" id="L63">        this.patientId = patientId;</span>
+<span class="nc" id="L64">        this.dateTime = dateTime;</span>
+<span class="nc" id="L65">        this.status = status;</span>
+<span class="nc" id="L66">        this.purpose = purpose;</span>
+<span class="nc" id="L67">    }</span>
+
+    public Long getId() {
+<span class="fc" id="L70">        return id;</span>
+    }
+
+    public void setId(Long id) {
+<span class="fc" id="L74">        this.id = id;</span>
+<span class="fc" id="L75">    }</span>
+
+    public Long getDoctorId() {
+<span class="fc" id="L78">        return doctorId;</span>
+    }
+
+    public void setDoctorId(Long doctorId) {
+<span class="fc" id="L82">        this.doctorId = doctorId;</span>
+<span class="fc" id="L83">    }</span>
+
+    public Long getPatientId() {
+<span class="fc" id="L86">        return patientId;</span>
+    }
+
+    public void setPatientId(Long patientId) {
+<span class="fc" id="L90">        this.patientId = patientId;</span>
+<span class="fc" id="L91">    }</span>
+
+    public LocalDateTime getDateTime() {
+<span class="fc" id="L94">        return dateTime;</span>
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+<span class="fc" id="L98">        this.dateTime = dateTime;</span>
+<span class="fc" id="L99">    }</span>
+
+    public Character getStatus() {
+<span class="fc" id="L102">        return status;</span>
+    }
+
+    /**
+     * Sets the status of the appointment, represented by a character code.
+     * 
+     * 'S' denotes scheduled (upcoming) appointments.
+     * 'F' denotes finished (past) appointments.
+     * 'C' denotes cancelled appointments.
+     * 
+     * @param status The status to set.
+     */
+
+    public void setStatus(Character status) {
+<span class="fc" id="L116">        this.status = status;</span>
+<span class="fc" id="L117">    }</span>
+
+    public String getPurpose() {
+<span class="fc" id="L120">        return purpose;</span>
+    }
+
+    public void setPurpose(String purpose) {
+<span class="fc" id="L124">        this.purpose = purpose;</span>
+<span class="fc" id="L125">    }</span>
+
+
+    /**
+     * Returns a string representation of the appointment.
+     *
+     * @return A string representation of the appointment.
+     */
+
+    @Override
+    public String toString() {
+<span class="fc" id="L136">        return &quot;Appointment{&quot; +</span>
+                &quot;id=&quot; + id +
+                &quot;, doctorId=&quot; + doctorId +
+                &quot;, patientId=&quot; + patientId +
+                &quot;, dateTime=&quot; + dateTime +
+                &quot;, status=&quot; + status +
+                &quot;, purpose='&quot; + purpose + '\'' +
+                '}';
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

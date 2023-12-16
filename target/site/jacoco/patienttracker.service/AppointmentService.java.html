@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AppointmentService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">patienttracker</a> &gt; <a href="index.source.html" class="el_package">patienttracker.service</a> &gt; <span class="el_source">AppointmentService.java</span></div><h1>AppointmentService.java</h1><pre class="source lang-java linenums">package patienttracker.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import patienttracker.model.Appointment;
+import patienttracker.repository.AppointmentRepository;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Service
+public class AppointmentService {
+
+    private final AppointmentRepository appointmentRepository;
+
+    @Autowired
+<span class="fc" id="L17">    public AppointmentService(AppointmentRepository appointmentRepository) {</span>
+<span class="fc" id="L18">        this.appointmentRepository = appointmentRepository;</span>
+<span class="fc" id="L19">    }</span>
+
+    public void addNewAppointment(Appointment appointment) {
+<span class="fc" id="L22">        this.appointmentRepository.save(appointment);</span>
+<span class="fc" id="L23">    }</span>
+
+    public List&lt;Appointment&gt; getAppointments() {
+<span class="fc" id="L26">        return this.appointmentRepository.findAll();</span>
+    }
+
+    public List&lt;Appointment&gt; getAppointmentsByDoctorId(Long doctorId) {
+<span class="nc" id="L30">        return this.appointmentRepository.findByDoctorId(doctorId);</span>
+    }
+
+    public List&lt;Appointment&gt; getAppointmentsByPatientId(Long patientId) {
+<span class="nc" id="L34">        return this.appointmentRepository.findByPatientId(patientId);</span>
+    }
+
+    public void updateAppointmentDateTime(Long appointmentId, LocalDateTime newDateTime) {
+<span class="nc" id="L38">        Appointment appointment = getAppointmentById(appointmentId);</span>
+<span class="nc" id="L39">        appointment.setDateTime(newDateTime);</span>
+<span class="nc" id="L40">        this.appointmentRepository.save(appointment);</span>
+<span class="nc" id="L41">    }</span>
+
+    public void updateAppointmentStatus(Long appointmentId, Character newStatus) {
+<span class="nc" id="L44">        Appointment appointment = getAppointmentById(appointmentId);</span>
+<span class="nc" id="L45">        appointment.setStatus(newStatus);</span>
+<span class="nc" id="L46">        this.appointmentRepository.save(appointment);</span>
+<span class="nc" id="L47">    }</span>
+
+    public Appointment getAppointmentById(Long appointmentId) {
+<span class="nc" id="L50">        return this.appointmentRepository.findById(appointmentId)</span>
+<span class="nc" id="L51">                .orElseThrow(() -&gt; new IllegalStateException(&quot;The appointment with ID &quot; + appointmentId + &quot; does not exist&quot;));</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

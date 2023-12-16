@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserConfig.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">patienttracker</a> &gt; <a href="index.source.html" class="el_package">patienttracker.config</a> &gt; <span class="el_source">UserConfig.java</span></div><h1>UserConfig.java</h1><pre class="source lang-java linenums">package patienttracker.config;
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import patienttracker.model.User;
+import patienttracker.repository.UserRepository;
+
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.List;
+
+@Configuration
+<span class="fc" id="L14">public class UserConfig {</span>
+
+    @Bean
+    CommandLineRunner userCommandLineRunner(UserRepository userRepository) {
+<span class="fc" id="L18">        return args -&gt; {</span>
+<span class="fc" id="L19">            User u1 = new User(</span>
+<span class="fc" id="L20">                    5L,</span>
+                    &quot;doc&quot;,
+                    &quot;***&quot;,
+                    &quot;John&quot;,
+                    &quot;Doe&quot;,
+<span class="fc" id="L25">                    LocalDate.of(1980, Month.AUGUST, 10),</span>
+<span class="fc" id="L26">                    'M',</span>
+<span class="fc" id="L27">                    'D'</span>
+            );
+
+<span class="fc" id="L30">            User u2 = new User(</span>
+<span class="fc" id="L31">                    6L,</span>
+                    &quot;janpat&quot;,
+                    &quot;****&quot;,
+                    &quot;Jane&quot;,
+                    &quot;Dawn&quot;,
+<span class="fc" id="L36">                    LocalDate.of(1985, Month.JUNE, 28),</span>
+<span class="fc" id="L37">                    'F',</span>
+<span class="fc" id="L38">                    'P'</span>
+            );
+
+<span class="fc" id="L41">            User u3 = new User(</span>
+<span class="fc" id="L42">                    7L,</span>
+                    &quot;rich&quot;,
+                    &quot;*****&quot;,
+                    &quot;Richard&quot;,
+                    &quot;Parker&quot;,
+<span class="fc" id="L47">                    LocalDate.of(1990, Month.JANUARY, 12),</span>
+<span class="fc" id="L48">                    'M',</span>
+<span class="fc" id="L49">                    'P'</span>
+            );
+
+//            userRepository.saveAll(List.of(u1, u2, u3));
+<span class="fc" id="L53">        };</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

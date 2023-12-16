@@ -1,0 +1,6 @@
+patienttracker\UserModelTests.class
+patienttracker\ApplicationModelTests.class
+patienttracker\PatientModelTests.class
+patienttracker\PatienttrackerApplicationTests.class
+patienttracker\DoctorModelTests.class
+patienttracker\AppointmentControllerIntegrationTest.class

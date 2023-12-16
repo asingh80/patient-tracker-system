@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AppointmentController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">patienttracker</a> &gt; <a href="index.source.html" class="el_package">patienttracker.controller</a> &gt; <span class="el_source">AppointmentController.java</span></div><h1>AppointmentController.java</h1><pre class="source lang-java linenums">package patienttracker.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import patienttracker.model.Appointment;
+import patienttracker.service.AppointmentService;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+@RestController
+@RequestMapping(&quot;/appointments&quot;)
+public class AppointmentController {
+
+    private final AppointmentService appointmentService;
+
+    @Autowired
+<span class="fc" id="L18">    public AppointmentController(AppointmentService appointmentService) {</span>
+<span class="fc" id="L19">        this.appointmentService = appointmentService;</span>
+<span class="fc" id="L20">    }</span>
+
+    @PostMapping
+    public void addNewAppointment(@RequestBody Appointment appointment) {
+<span class="fc" id="L24">        this.appointmentService.addNewAppointment(appointment);</span>
+<span class="fc" id="L25">    }</span>
+
+    @GetMapping
+    public List&lt;Appointment&gt; getAppointments() {
+<span class="nc" id="L29">        return this.appointmentService.getAppointments();</span>
+    }
+
+    @GetMapping(&quot;/doctor/{doctorId}&quot;)
+    public List&lt;Appointment&gt; getAppointmentsByDoctorId(@PathVariable Long doctorId) {
+<span class="nc" id="L34">        return this.appointmentService.getAppointmentsByDoctorId(doctorId);</span>
+    }
+
+    @GetMapping(&quot;/patient/{patientId}&quot;)
+    public List&lt;Appointment&gt; getAppointmentsByPatientId(@PathVariable Long patientId) {
+<span class="nc" id="L39">        return this.appointmentService.getAppointmentsByPatientId(patientId);</span>
+    }
+
+    @PutMapping(&quot;/updateDateTime/{appointmentId}&quot;)
+    public void updateAppointmentDateTime(@PathVariable Long appointmentId,
+                                          @RequestParam LocalDateTime newDateTime) {
+<span class="nc" id="L45">        this.appointmentService.updateAppointmentDateTime(appointmentId, newDateTime);</span>
+<span class="nc" id="L46">    }</span>
+
+    @PutMapping(&quot;/updateStatus/{appointmentId}&quot;)
+    public void updateAppointmentStatus(@PathVariable Long appointmentId,
+                                          @RequestParam Character newStatus) {
+<span class="nc" id="L51">        this.appointmentService.updateAppointmentStatus(appointmentId, newStatus);</span>
+<span class="nc" id="L52">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
