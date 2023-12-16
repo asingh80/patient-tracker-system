@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate, BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import LoginForm from './LoginSignup';
 import './stylesheets/App.css';
-
+import './stylesheets/WelcomePage.css'
 const NavBar = () => {
   return (
     <div>
@@ -24,7 +24,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   const handleLogin = (userType) => {
-    navigate('/' + userType); 
+    navigate(`/${userType}/${userType}`);
   };
 
   return (
@@ -33,7 +33,7 @@ const Home = () => {
       <div className="login-buttons">
           <button onClick={() => handleLogin('patient')}>I am a patient</button>
           <button onClick={() => handleLogin('doctor')}>I am a doctor</button>
-        </div>
+      </div>
     </div>
   );
 };
@@ -44,8 +44,8 @@ const App = () => {
       <NavBar></NavBar>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/doctor" element={<LoginForm />} />
-        <Route path="/patient" element={<WelcomePage />} />
+        <Route path="/doctor/:userType" element={<LoginForm />} />
+        <Route path="/patient/:userType" element={<LoginForm />} />
         {/* Other routes */}
       </Routes>
     </Router>
